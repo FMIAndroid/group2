@@ -26,6 +26,7 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/edittext_last_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edittext_first_name"
