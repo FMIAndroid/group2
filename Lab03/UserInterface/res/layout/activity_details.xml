@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageview_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textview_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageview_profile"
+        android:text="@string/ivan_mail_com"
+        style="@style/UserField"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/textview_full_name"
+        style="@style/UserField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textview_email"
+        android:background="@color/semitransparent_black"
+        android:text="@string/ivan_petrov"
+        android:textStyle="bold" />
+
+</RelativeLayout>
