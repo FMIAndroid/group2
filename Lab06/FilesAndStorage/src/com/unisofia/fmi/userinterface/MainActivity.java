@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -119,6 +120,8 @@ public class MainActivity extends Activity {
 
 	private Intent createCameraIntent() {
 		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                Uri.fromFile(/* Your file here */));
 		return cameraIntent;
 	}
 
