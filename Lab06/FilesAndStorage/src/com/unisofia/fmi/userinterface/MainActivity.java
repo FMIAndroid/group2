@@ -1,12 +1,18 @@
 package com.unisofia.fmi.userinterface;
 
+import java.io.File;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.content.SharedPreferences.Editor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +34,8 @@ public class MainActivity extends Activity {
 	private EditText mPasswordEditText;
 	private EditText mPasswordAgainEditText;
 	private Button mSubmitButton;
+
+	private String mPhotoPath;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +80,7 @@ public class MainActivity extends Activity {
 
 		switch (requestCode) {
 		case REQUEST_CODE_CAMERA:
-			// TODO save the captured image to the SD card and set the full
-			// sized image as profile, save the path to it to shared preference
+			mProfileImageView.setImageBitmap(BitmapFactory.decodeFile(mPhotoPath));
 			break;
 		case REQUEST_CODE_GALLERY:
 			// TODO Set the selected image as profile and save the path to it in
@@ -105,7 +112,7 @@ public class MainActivity extends Activity {
 							requestCode = REQUEST_CODE_GALLERY;
 							break;
 						}
-						if (imageIntent.resolveActivity(getPackageManager()) != null) {
+						if (imageIntent != null && imageIntent.resolveActivity(getPackageManager()) != null) {
 							startActivityForResult(imageIntent, requestCode);
 						} else {
 							Toast.makeText(getApplicationContext(),
@@ -120,8 +127,12 @@ public class MainActivity extends Activity {
 
 	private Intent createCameraIntent() {
 		Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                Uri.fromFile(/* Your file here */));
+		File imageFile = createImageFile();
+		if (imageFile == null) {
+			return null;
+		}
+		cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
+		
 		return cameraIntent;
 	}
 
@@ -129,6 +140,32 @@ public class MainActivity extends Activity {
 		Intent galleryIntent = new Intent(Intent.ACTION_PICK);
 		galleryIntent.setType("image/*");
 		return galleryIntent;
+	}
+
+	private File createImageFile() {
+		String state = Environment.getExternalStorageState();
+		if (!Environment.MEDIA_MOUNTED.equals(state)) {
+			return null;
+		}
+
+		String fileName = "IMG_PROFILE";
+		File storageDir = Environment
+				.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		File image;
+		try {
+			image = File.createTempFile(
+					fileName, /* prefix */
+					".png", /* suffix */
+					storageDir /* directory */
+			);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		mPhotoPath = image.getAbsolutePath();
+
+		return image;
 	}
 
 	private boolean isInputValid() {
@@ -148,14 +185,14 @@ public class MainActivity extends Activity {
 		StringBuilder name = new StringBuilder();
 		name.append(firstName).append(" ").append(lastName);
 
+		Editor editor = getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE).edit();
+		editor.putString(Constants.EXTRA_NAME, name.toString());
+		editor.putString(Constants.EXTRA_EMAIL, email);
+		editor.putString(Constants.EXTRA_PHONE, phone);
+		editor.putString(Constants.EXTRA_PHOTO_PATH, mPhotoPath);
+		editor.commit();
+
 		Intent detailsIntent = new Intent(this, DetailsActivity.class);
-		// TODO pass save the params in SharedPreferences instead of passing
-		// them as intent extras
-
-		// detailsIntent.putExtra(Extras.EXTRA_NAME, name.toString());
-		// detailsIntent.putExtra(Extras.EXTRA_EMAIL, email);
-		// detailsIntent.putExtra(Extras.EXTRA_PHONE, phone);
-
 		startActivity(detailsIntent);
 
 		return true;
