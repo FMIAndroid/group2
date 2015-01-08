@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CombinedControlExample</string>
+    <string name="_1_s_of_2_s">%1$s of %2$s</string>
+
+</resources>

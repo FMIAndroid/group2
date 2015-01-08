@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NewControlExample</string>
+    <string name="commands">Commands</string>
+    <string name="on_click">On click</string>
+    <string name="on_left">On left</string>
+    <string name="on_right">On right</string>
+    <string name="on_up">On up</string>
+    <string name="on_down">On down</string>
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ExtendedControlExample</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="click_me">Click me!</string>
+     <string name="clicked">You have clicked me too hard!!!</string>
+
+</resources>
