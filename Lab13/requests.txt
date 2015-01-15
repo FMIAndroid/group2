@@ -1,0 +1,12 @@
+https://github.com/typicode/jsonplaceholder
+
+Get all users
+http://jsonplaceholder.typicode.com/users/
+
+Get all posts for selected user
+http://jsonplaceholder.typicode.com/posts?userId=?
+
+Get all comments for selected post
+http://jsonplaceholder.typicode.com/comments?postId=?
+
+Add, Update, Delete comment
