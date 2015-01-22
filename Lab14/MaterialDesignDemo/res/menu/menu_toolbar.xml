@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_orientation"
+        android:checkable="true"
+        android:checked="false"
+        android:title="@string/horizontal"/>
+    <item
+        android:id="@+id/action_direction"
+        android:checkable="true"
+        android:checked="false"
+        android:title="@string/reverse"/>
+
+</menu>

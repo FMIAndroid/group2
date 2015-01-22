@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Material Design Demo</string>
+
+    <!-- Activity titles -->
+    <string name="title_linear_layout_manager">Linear Layout Manager</string>
+    <string name="title_grid_layout_manager">Grid Layout Manager</string>
+
+    <!-- Others -->
+    <string name="image">image</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="reverse">Reverse</string>
+    <string name="title_switch_compat">Switch Compat</string>
+    <string name="title_toolbar_activity">Toolbar activity</string>
+    <string name="delete">Delete</string>
+    <string name="enter_something">Enter something</string>
+    <string name="title_edittext_activity">EditText Activity</string>
+    <string name="title_drawer_layout_activity">Drawer Layout Example</string>
+
+</resources>

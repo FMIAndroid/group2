@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.unisofia.fmi.materialdesigndemo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.recyclerview.LinearLayoutManagerActivity"
+            android:label="@string/title_linear_layout_manager" />
+        <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.recyclerview.GridLayoutManagerActivity"
+            android:label="@string/title_grid_layout_manager" />
+        <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.switchcompat.SwitchCompatActivity"
+            android:label="@string/title_switch_compat" />
+        <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.toolbar.ToolbarActivity"
+            android:label="@string/title_toolbar_activity" />
+        <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.edittext.EditTextActivity"
+            android:label="@string/title_edittext_activity" />
+         <activity
+            android:name="com.unisofia.fmi.materialdesigndemo.drawerlayout.DrawerLayoutActivity"
+            android:theme="@style/DrawerStyle"
+            android:label="@string/title_drawer_layout_activity" />
+    </application>
+
+</manifest>
